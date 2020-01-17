@@ -1,19 +1,29 @@
-# Write classes for the following class hierarchy:
-#
-#  [Vehicle]->[FlightVehicle]->[Starship]
-#      |                |
-#      v                v
-# [GroundVehicle]      [Airplane]
-#   |       |
-#   v       v
-# [Car]  [Motorcycle]
-#
-# Each class can simply "pass" for its body. The exercise is about setting up
-# the hierarchy.
-#
-# e.g.
-#
-# class Whatever:
-#     pass
-#
-# Put a comment noting which class is the base class
+# Demonstrate Understanding of Python Object Class Hierarchy
+
+# Base/Parent
+class Vehicle:
+    pass 
+
+# Child
+class FlightVehicle(Vehicle):
+    pass 
+
+# Grandchild
+class Airplane(FlightVehicle):
+    pass
+
+# Grandchild
+class Starship(FlightVehicle):
+    pass
+
+# Child
+class GroundVehicle(Vehicle):
+    pass 
+
+# Grandchild
+class Car(GroundVehicle):
+    pass 
+
+# Grandchild
+class Motorcycle(GroundVehicle):
+    pass

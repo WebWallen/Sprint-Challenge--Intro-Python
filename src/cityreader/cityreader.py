@@ -1,26 +1,33 @@
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
+class City:
+  def __init__(self, name, lat, lon):
+    self.name = name
+    self.lat = lat
+    self.lon = lon
+  
+  # Remember: this should NOT be indented (and if it is, the method won't register whatsoever!)
+  def __repr__(self):
+    return f"{self.name}, {self.lat}, {self.lon}"
 
-# We have a collection of US cities with population over 750,000 stored in the
-# file "cities.csv". (CSV stands for "comma-separated values".)
-#
-# In the body of the `cityreader` function, use Python's built-in "csv" module 
-# to read this file so that each record is imported into a City instance. Then
-# return the list with all the City instances from the function.
-# Google "python 3 csv" for references and use your Google-fu for other examples.
-#
-# Store the instances in the "cities" list, below.
-#
-# Note that the first line of the CSV is header that describes the fields--this
-# should not be loaded into a City object.
+import csv
+# CSV stands for "Comma Separated Values"
+
 cities = []
+# Always begin by initializing an empty array when you plan to create new data based on existing file structure
 
 def cityreader(cities=[]):
-  # TODO Implement the functionality to read from the 'cities.csv' file
-  # For each city record, create a new City instance and add it to the 
-  # `cities` list
-    
+
+    file = open('src/cityreader/cities.csv', 'r')
+    # Open the linked file (note: often have to include /more-paths/than-expected) in 'read-only' mode
+    with file:
+      # DictReader converts file into format Python can manipulate for programming purposes
+      csv_reader = csv.DictReader(file)
+      for row in csv_reader:
+        # For each specified row inside this file, create a new entry inside the cities array
+        cities.append(City(row['city'], float(row['lat']), float(row['lng'])))
+    file.close()
     return cities
 
 cityreader(cities)
