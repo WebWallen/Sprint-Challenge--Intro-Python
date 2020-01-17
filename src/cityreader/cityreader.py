@@ -2,14 +2,14 @@
 # fields for name, lat and lon (representing latitude and longitude).
 
 class City:
-  def __init__(self, name, lat, lng):
+  def __init__(self, name, lat, lon):
     self.name = name
     self.lat = lat
-    self.lng = lng
+    self.lon = lon
   
   # Remember: this should NOT be indented (and if it is, the method won't register whatsoever!)
   def __repr__(self):
-    return f"{self.name}, {self.lat}, {self.lng}"
+    return f"{self.name}, {self.lat}, {self.lon}"
 
 import csv
 # CSV stands for "Comma Separated Values"
@@ -26,7 +26,7 @@ def cityreader(cities=[]):
       csv_reader = csv.DictReader(file)
       for row in csv_reader:
         # For each specified row inside this file, create a new entry inside the cities array
-        cities.append(City(row['city'], row['lat'], row['lng']))
+        cities.append(City(row['city'], float(row['lat']), float(row['lng'])))
     file.close()
     return cities
 
