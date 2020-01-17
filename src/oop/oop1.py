@@ -12,7 +12,7 @@ class FlightVehicle(Vehicle):
 class Airplane(FlightVehicle):
     pass
 
-# Child
+# Grandchild
 class Starship(FlightVehicle):
     pass
 
